@@ -1,0 +1,46 @@
+<!-- Quiet Hacker - HTML Preview -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A quiet hacker terminal" />
+  <title>Quiet Hacker</title>
+  <link rel="stylesheet" href="example.css" />
+</head>
+<body>
+  <main class="terminal" role="main">
+    <header class="terminal__header">
+      <span class="terminal__title">quiet-hacker v1.0.0</span>
+    </header>
+
+    <section class="terminal__body">
+      <p>Welcome to the system.</p>
+      <p>All connections are <strong>encrypted</strong>.</p>
+      <p id="status" data-state="active">Status: <em>online</em></p>
+    </section>
+
+    <form class="terminal__form" action="/exec" method="POST">
+      <label for="cmd" class="sr-only">Command</label>
+      <input
+        type="text"
+        id="cmd"
+        name="command"
+        class="terminal__input"
+        placeholder="Enter command..."
+        autocomplete="off"
+        autofocus
+      />
+    </form>
+  </main>
+
+  <template id="line-template">
+    <div class="terminal__line">
+      <span class="terminal__prompt">&gt;</span>
+      <span class="terminal__text"></span>
+    </div>
+  </template>
+
+  <script src="example.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+/* Quiet Hacker - CSS Preview */
+:root {
+  --bg: #000000;
+  --fg: #e0e0e0;
+  --green: #00ff41;
+  --green-dark: #00802a;
+  --grey: #666666;
+  --radius: 4px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  background-color: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terminal {
+  border: 1px solid var(--green);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 640px;
+  width: 100%;
+  position: relative;
+}
+
+.terminal::before {
+  content: ">";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  color: var(--green);
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+.terminal__header {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--green-dark);
+}
+
+.terminal__title {
+  color: var(--green);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.terminal__body p {
+  color: var(--grey);
+  margin-bottom: 0.5rem;
+}
+
+.terminal__body p:last-child {
+  margin-bottom: 0;
+}
+
+.terminal__input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--green);
+  color: var(--green);
+  font-family: inherit;
+  font-size: 1rem;
+  width: 100%;
+  padding: 0.25rem 0;
+  outline: none;
+  caret-color: var(--green);
+}
+
+.terminal__input:focus {
+  border-bottom-color: var(--green);
+  box-shadow: 0 1px 0 var(--green);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.2em;
+  background: var(--green);
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@media (max-width: 768px) {
+  .terminal {
+    padding: 1rem;
+    margin: 1rem;
+  }
+}

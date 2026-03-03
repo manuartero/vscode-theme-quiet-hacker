@@ -1,0 +1,33 @@
+{
+  "name": "quiet-hacker",
+  "version": "1.0.0",
+  "description": "A minimal hacker theme",
+  "config": {
+    "debug": false,
+    "port": 8080,
+    "maxConnections": 100,
+    "timeout": null,
+    "features": ["auth", "logging", "cache"],
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "name": "hacker_db",
+      "pool": {
+        "min": 2,
+        "max": 10,
+        "idle": 30000
+      }
+    },
+    "cors": {
+      "origins": ["https://example.com"],
+      "methods": ["GET", "POST", "PUT", "DELETE"],
+      "credentials": true
+    }
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon --watch src",
+    "test": "vitest run",
+    "build": "tsc && esbuild"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "quiet-hacker",
+  "displayName": "Quiet Hacker",
+  "description": "Hard black. Pure green. Minimal palette. Hacker vibes for vibe coding.",
+  "version": "1.0.0",
+  "publisher": "manuartero",
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "hacker",
+    "green",
+    "minimal",
+    "terminal",
+    "matrix",
+    "vibe coding"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manuartero/vscode-theme-quiet-hacker"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Quiet Hacker",
+        "uiTheme": "vs-dark",
+        "path": "./themes/quiet-hacker-color-theme.json"
+      }
+    ]
+  }
+}

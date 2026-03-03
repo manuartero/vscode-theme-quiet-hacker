@@ -1,0 +1,86 @@
+// Quiet Hacker - SCSS Preview
+$bg: #000000;
+$fg: #e0e0e0;
+$green: #00ff41;
+$green-dark: #00802a;
+$grey: #666666;
+
+$font-mono: "JetBrains Mono", "Fira Code", monospace;
+$radius: 4px;
+$transition: 200ms ease;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin border-glow($color: $green) {
+  border: 1px solid $color;
+  box-shadow: 0 0 4px rgba($color, 0.2);
+}
+
+%reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @extend %reset;
+  font-family: $font-mono;
+  background: $bg;
+  color: $fg;
+  min-height: 100vh;
+  @include flex-center;
+}
+
+.card {
+  @include border-glow;
+  border-radius: $radius;
+  padding: 2rem;
+  max-width: 600px;
+  transition: box-shadow $transition;
+
+  &:hover {
+    box-shadow: 0 0 12px rgba($green, 0.4);
+  }
+
+  &__title {
+    color: $green;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__body {
+    color: $grey;
+    line-height: 1.6;
+
+    a {
+      color: $green-dark;
+      text-decoration: none;
+
+      &:hover {
+        color: $green;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &--highlighted {
+    @include border-glow($green);
+    background: rgba($green, 0.05);
+  }
+}
+
+@for $i from 1 through 4 {
+  .col-#{$i} {
+    width: percentage($i / 4);
+  }
+}
+
+@each $name, $color in (success: $green, muted: $grey, accent: $green-dark) {
+  .text-#{$name} {
+    color: $color;
+  }
+}

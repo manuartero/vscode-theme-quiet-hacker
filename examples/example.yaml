@@ -1,0 +1,78 @@
+# Quiet Hacker - YAML Preview
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quiet-hacker-api
+  namespace: production
+  labels:
+    app: quiet-hacker
+    tier: backend
+    version: "1.0.0"
+  annotations:
+    description: "Main API deployment"
+
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+
+  selector:
+    matchLabels:
+      app: quiet-hacker
+
+  template:
+    metadata:
+      labels:
+        app: quiet-hacker
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/manuartero/quiet-hacker:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: LOG_LEVEL
+              value: "info"
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: host
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quiet-hacker-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: quiet-hacker
+  ports:
+    - port: 80
+      targetPort: 8080
