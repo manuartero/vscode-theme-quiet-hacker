@@ -1,18 +1,24 @@
 # Quiet Hacker
 
+<p align="center">
+    <img src="./icon.png" width="64px" />
+</p>
+
 Hard black. Pure green. Nothing else.
 
 A minimal VS Code theme for vibe coding. No distractions, no rainbow syntax, just you and the machine.
 
+![](./screenshot.png)
+
 ## Palette
 
-| Role | Hex |
-|---|---|
+|    Role    |    Hex    |
+| ---------- | --------- |
 | Background | `#000000` |
-| Green | `#00FF41` |
+| Green      | `#00FF41` |
 | Dark Green | `#00802a` |
-| Text | `#E0E0E0` |
-| Muted | `#666666` |
+| Text       | `#E0E0E0` |
+| Muted      | `#666666` |
 
 ## Philosophy
 
