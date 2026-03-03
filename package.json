@@ -3,8 +3,8 @@
   "displayName": "Quiet Hacker",
   "description": "Hard black. Pure green. Minimal palette. Hacker vibes for vibe coding.",
   "version": "1.0.0",
-  "publisher": "manuartero",
   "license": "MIT",
+  "publisher": "ManuelArtero",
   "icon": "icon.png",
   "engines": {
     "vscode": "^1.70.0"
